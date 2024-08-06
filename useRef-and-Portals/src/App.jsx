@@ -1,10 +1,12 @@
+import FilePicker from './components/FilePicker.jsx';
 import Player from './components/Player.jsx';
 
 function App() {
   return (
     <>
       <Player />
-      <div id="challenges"></div>
+      {/* <FilePicker/> */}
+      {/* <div id="challenges"></div> */}
     </>
   );
 }
