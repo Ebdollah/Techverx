@@ -1,4 +1,5 @@
 import FilePicker from './components/RefPractice/FilePicker/FilePicker.jsx';
+import  Appp  from './components/RefPractice/Input/Appp.jsx';
 import Player from './components/RefPractice/Player.jsx';
 import File from './components/RefPractice/Workout/File.jsx';
 import TimerChallenge from './components/TimerChallenge.jsx';
@@ -9,6 +10,7 @@ function App() {
       {/* <Player /> */}
       {/* <FilePicker/> */}
       {/* <File /> */}
+      {/* <Appp /> */}
       <div id="challenges">
         <TimerChallenge title="Easy" targetTime={1}/>
         <TimerChallenge title="Not Easy" targetTime={5}/>
