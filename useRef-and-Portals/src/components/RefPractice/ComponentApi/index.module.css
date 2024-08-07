@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Lato:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(#180d27, #0c0219);
+  color: #e5d9f1;
+  min-height: 100vh;
+}
+
+#app {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 30rem;
+  text-align: center;
+  border-radius: 6px;
+  background: linear-gradient(#341a89, #3a1967);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border: 1px solid white;
+  border-radius: 6px;
+  background: none;
+  color: #e5d9f1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+form button {
+  background: linear-gradient(#9e21c8, #8b179c);
+  border: none;
+}
+
+form {
+  width: 90%;
+  max-width: 40rem;
+  margin: 3rem auto;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #e5d9f1;
+  border-radius: 6px;
+  background: none;
+  color: #e5d9f1;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 1rem;
+}
+
+#actions {
+  text-align: right;
+}
