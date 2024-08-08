@@ -1,12 +1,13 @@
 import React from 'react';
-import { MyProvider } from './MyProvider';
 import MyComponent from './MyComponent';
+import File from './Exercise/File';
 
 function App() {
   return (
-    <MyProvider>
-      <MyComponent />
-    </MyProvider>
+    
+      // <MyComponent />
+      <File />
+   
   );
 }
 

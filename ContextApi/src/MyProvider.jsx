@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MyContext from './MyContext';
 
 // Create a provider component
-export const MyProvider = ({ children }) => {
+const MyProvider = ({ children }) => {
   const [state, setState] = useState('default value');
 
   return (
@@ -11,3 +11,4 @@ export const MyProvider = ({ children }) => {
     </MyContext.Provider>
   );
 };
+export default MyProvider;
