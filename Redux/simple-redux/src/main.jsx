@@ -8,7 +8,7 @@ import {Provider} from 'react-redux'
 
 // //Store --Globalized State
 
-// //Action
+//Action
 // const increment = ()=>{
 //   return{
 //     type : 'INCREMENT'
@@ -20,7 +20,17 @@ import {Provider} from 'react-redux'
 //   };
 // }
 
+// const counterReducer = (state = 0, action)=>{
+//   switch(action.type){
+//       case 'INCREMENT':
+//           return state + 1;
+//       case 'DECREMENT':
+//           return state - 1;
+//   }
+// }
 
+
+// const store = legacy_createStore(counterReducer);
 const store = legacy_createStore(allReducers);
 // store.subscribe(()=>console.log(store.getState()));
 
