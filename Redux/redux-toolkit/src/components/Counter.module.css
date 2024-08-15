@@ -1,0 +1,51 @@
+.counter {
+  margin: 5rem auto;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  width: 40rem;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  background-color: #f4f0fa;
+}
+
+.counter h1 {
+  text-transform: uppercase;
+  color: #575757;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.value {
+  font-size: 2rem;
+  color: #3c0080;
+  margin: 2rem 0;
+  font-weight: bold;
+}
+
+/* Button Styling */
+.button {
+  background-color: #3c0080;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  /* margin: 0 0.5rem; */
+  margin: 10px 10px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #5a00b2;
+}
+
+.button:active {
+  background-color: #29004d;
+  transform: scale(0.95);
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
