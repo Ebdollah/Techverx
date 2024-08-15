@@ -1,17 +1,23 @@
-import Counter from './components/Counter';
-import Header from './components/Header';
+import Counter from "./components/Counter";
+import Header from "./components/Header";
 // import Auth from './components/Auth;'
-import Authentication from './components/Authentication';
-import UserProfile from './components/UserProfile';
+import Authentication from "./components/Authentication";
+import UserProfile from "./components/UserProfile";
+import { useSelector, useDispatch } from "react-redux";
 
 function App() {
+  const isLoggedIn = useSelector((state) => state.auth.isAuthenticated);
   return (
     <>
-    <Header />
-    {/* <Auth /> */}
-    <Authentication />
-    {/* <UserProfile/> */}
-    <Counter />
+      <Header />
+      {/* <Auth /> */}
+      {!isLoggedIn && <Authentication />}
+      {isLoggedIn && (
+        <>
+          <UserProfile />
+          <Counter />
+        </>
+      )}
     </>
   );
 }
