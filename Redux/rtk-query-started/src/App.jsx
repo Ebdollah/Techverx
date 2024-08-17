@@ -17,7 +17,11 @@ export const router = createBrowserRouter([
       {
         path : "/create",
         element : <CreateUser />
-      }
+      },
+      {
+        path: "/edit/:id",
+        element: <CreateUser />,
+      },
     ],
   },
 ]);

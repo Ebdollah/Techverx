@@ -17,8 +17,20 @@ export const studentApi = createApi({
                 body : student,
             }),
             invalidatesTags : ["Student"],
+        }),
+        deleteStudent : builder.mutation({
+            query : (id) => ({
+                url : `/users/${id}`,
+                method : "DELETE",
+            }),
+            invalidatesTags : ["Student"],
+        }),
+        editStudent : builder.mutation({
+            query : (id) => ({
+
+            })
         })
     })
 })
 
-export const {useGetStudentsQuery, useAddStudentMutation} = studentApi;
+export const {useGetStudentsQuery, useAddStudentMutation, useDeleteStudentMutation, useEditStudentMutation} = studentApi;
