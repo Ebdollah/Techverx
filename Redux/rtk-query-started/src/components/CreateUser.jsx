@@ -1,16 +1,21 @@
 import React, { useRef, useContext, useState } from 'react';
-import {useAddStudentMutation} from "../redux/features/studentApi"
+import {useAddStudentMutation, useGetStudentsQuery} from "../redux/features/studentApi"
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateUser() {
   const username = useRef();
   const email = useRef();
+  const navigate = useNavigate();
   const [addStudent] = useAddStudentMutation();
+  // const {refetch} = useGetStudentsQuery();
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const student = {studentName : username.current.value,studentEmail : email.current.value };
-    addStudent(student);
     console.log(username.current.value,email.current.value)
+    await addStudent(student);
+    // refetch();
+    navigate("/");
   };
 
   return (

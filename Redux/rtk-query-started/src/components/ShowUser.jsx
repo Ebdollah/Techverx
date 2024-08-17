@@ -11,7 +11,7 @@ function ShowUser() {
   return (
     <div>
         <h1>Student Data</h1>
-        <div>
+        <div className='grid grid-cols-4 gap-4'>
             {isSuccess && data?.map((studentData) =>{return(
                 <div className='m-5' key={studentData.id}>
                 <h1>{studentData.studentName}</h1>
