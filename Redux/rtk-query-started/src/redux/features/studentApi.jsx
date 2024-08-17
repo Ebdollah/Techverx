@@ -7,8 +7,15 @@ export const studentApi = createApi({
     endpoints : (builder) => ({
         getStudents : builder.query({
             query : ()=> "/users"
+        }),
+        addStudent : builder.mutation({
+            query : (student) => ({
+                url : "/users",
+                method : "POST",
+                body : student,
+            })
         })
     })
 })
 
-export const {useGetStudentsQuery} = studentApi;
+export const {useGetStudentsQuery, useAddStudentMutation} = studentApi;
