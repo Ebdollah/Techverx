@@ -1,21 +1,46 @@
-import React, { useRef, useContext, useState } from 'react';
-import {useAddStudentMutation, useGetStudentsQuery} from "../redux/features/studentApi"
+import React, { useRef, useContext, useState, useEffect } from 'react';
+import {useAddStudentMutation, useGetStudentByIdQuery, useEditStudentMutation} from "../redux/features/studentApi"
 import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 
 export default function CreateUser() {
   const username = useRef();
   const email = useRef();
+  const { id } = useParams();
   const navigate = useNavigate();
   const [addStudent] = useAddStudentMutation();
+  const [editStudent] = useEditStudentMutation();
+
   // const {refetch} = useGetStudentsQuery();
+  console.log(id);
   
+  // const { data: student } = useGetStudentByIdQuery(id, { skip: !id }); // Fetch only if `id` is present
+
+  // useEffect(() => {
+  //   if (student) {
+  //     // If editing, pre-fill the form with the student's data
+  //     username.current.value = student.studentName;
+  //     email.current.value = student.studentEmail;
+  //   }
+  // }, [student]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const student = {studentName : username.current.value,studentEmail : email.current.value };
-    console.log(username.current.value,email.current.value)
-    await addStudent(student);
-    // refetch();
-    navigate("/");
+    const studentData = {
+      studentName: username.current.value,
+      studentEmail: email.current.value,
+    };
+
+    if (id) {
+      // If an id is present, update the user
+      await editStudent({ id, ...studentData });
+    } else {
+      // Otherwise, create a new user
+      await addStudent(studentData);
+    }
+
+    navigate('/');
   };
 
   return (
@@ -52,7 +77,7 @@ export default function CreateUser() {
 
         <div className="flex justify-end space-x-4">
           <button className="px-4 py-2 bg-teal-800 text-white rounded hover:bg-teal-700">
-            Create
+            {id ? 'Update User' : 'Create User'}
           </button>
         </div>
       </form>

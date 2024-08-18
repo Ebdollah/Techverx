@@ -1,5 +1,5 @@
-import React from "react";
-import { useGetStudentsQuery, useDeleteStudentMutation } from "../redux/features/studentApi";
+import React, { useState } from "react";
+import { useGetStudentsQuery, useDeleteStudentMutation, useEditStudentMutation } from "../redux/features/studentApi";
 import { FaEdit, FaTrash } from "react-icons/fa"; // FaEdit for edit and FaTrash for delete icon
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,9 @@ function ShowUser() {
   const { data, isSuccess, isLoading, isError, error } = useGetStudentsQuery();
   console.log(data);
   const [deleteStudent] = useDeleteStudentMutation();
+  const [editStudent] = useEditStudentMutation();
+  const [editingUser, setEditingUser] = useState(null);
+  const [name, setName] = useState('');
   const navigate = useNavigate();
 
 
@@ -20,6 +23,12 @@ function ShowUser() {
     return <p>Eror</p>;
   }
   // if(isError){return <p>{error}</p>}
+  const handleEditClick = (user) => {
+    navigate(`edit/${user?.id}`)
+    // setEditingUser(user);
+    // setName(user.name);
+  };
+
   return (
     <div>
       <h1>Student Data</h1>
@@ -27,14 +36,14 @@ function ShowUser() {
         {isSuccess &&
           data?.map((studentData) => {
             return (
-              <div className="flex m-3" key={studentData.id}>
+              <div className="flex m-3" key={studentData?.id}>
                 <div className="mr-4">
                   <h1>{studentData.studentName}</h1>
                   <h2>{studentData.studentEmail}</h2>
                 </div>
                 <div className="flex flex-col p-1">
                   <button
-                    onClick={()=>navigate(`edit/${studentData?.id}`)}
+                    onClick={()=>handleEditClick(studentData)}
                     className="text-blue-500 hover:text-blue-700 p-1"
                   >
                     <FaEdit size={16} />
