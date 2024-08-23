@@ -1,0 +1,7 @@
+car properties > name, model, color, for_sale
+
+methods drive, start, break, description
+for car wheels will be 4
+
+student > name, rollno, car_name, car_model
+programming_class > no_students, absent_students,
