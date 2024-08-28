@@ -5,6 +5,9 @@ from . import views
 
 urlpatterns = [
     path('', lambda request : HttpResponse("Landing page"), name='ind'),
-    path('jan' , views.jan, name='jan' ),
-    path('feb' , views.feb, name='feb' ),
+    path("<int:month>", views.monthly_challenges_by_number),
+
+    path("<str:month>", views.monthly_challenge),
+    # path('jan' , views.jan, name='jan' ),
+    # path('feb' , views.feb, name='feb' ),
 ]
