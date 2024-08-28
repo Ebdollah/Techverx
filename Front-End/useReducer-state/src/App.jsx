@@ -6,6 +6,7 @@ function App() {
   return (
     <div>
       {/* <Usestate /> */}
+      <h1>dewi</h1>
       <Usereducer />
     </div>
   )
