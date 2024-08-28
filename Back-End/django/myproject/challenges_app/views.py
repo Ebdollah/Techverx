@@ -52,7 +52,10 @@ def monthly_challenges_by_number(request, month):
 
 def monthly_challenge(request, month):
     try:
-        return render(request , "challenges/challenges.html")
+        challenge_text = monthly_challenges[month]
+        return render(request , "challenges/challenges.html",{
+            "text" : challenge_text, #to use DTL inside HTML file we need to implement this
+        }) #we can access text inside html file as you can see in your
     except:
         return HttpResponseNotFound()
     # challenge_text = None
