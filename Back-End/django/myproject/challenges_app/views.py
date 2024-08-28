@@ -30,14 +30,18 @@ monthly_challenges = {
 }
 
 def month_list(request):
-    list_items = ""
     months = list(monthly_challenges.keys())
 
-    for month in months:
-        month_path = reverse("month_challenge", args=[month])
-        list_items += f"<li><a href=\"{month_path}\">{month}</a></li>"
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    return render(request, "challenges/index.html", {
+        "months_list": months, #so index.html will have months list which will we loop in file
+        #in index file we can see how can we dynamically make url
+    })  #so there is no need of below code, just saving it for reference.
+    #####################################################################################
+    # for month in months:
+    #     month_path = reverse("month_challenge", args=[month])
+    #     list_items += f"<li><a href=\"{month_path}\">{month}</a></li>"
+    # response_data = f"<ul>{list_items}</ul>"
+    # return HttpResponse(response_data)
 
 def monthly_challenges_by_number(request, month):
     months = list(monthly_challenges.keys())
@@ -54,7 +58,8 @@ def monthly_challenge(request, month):
     try:
         challenge_text = monthly_challenges[month]
         return render(request , "challenges/challenges.html",{
-            "text" : challenge_text, #to use DTL inside HTML file we need to implement this
+            "month_title": month,
+            "month_text" : challenge_text, #to use DTL inside HTML file we need to implement this
         }) #we can access text inside html file as you can see in your
     except:
         return HttpResponseNotFound()

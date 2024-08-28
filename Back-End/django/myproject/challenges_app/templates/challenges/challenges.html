@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Monthly Challenge</title>
+    <title>{{ month_title }} Challenge</title>
 </head>
 <body>
-<h1>This month challenge</h1>
-<h3>{{ text }}</h3>
+<h1>This {{ month_title | title}} challenge</h1>
+{# we can also add if taf=g and for tag #}
+<h3>{{ month_text }}</h3>
 </body>
 </html>

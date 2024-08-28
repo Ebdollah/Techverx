@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>All Challaenges</title>
 </head>
 <body>
-$END$
+<ul>
+   {% for month in months_list %} {# these are tags for custom work #}
+    <li>
+       {#  <a href="/challenges/{{ month }}">{{ month | title }}</a> {# One way to add url link #\} #}
+        <a href="{% url 'month_challenge' month %}">{{ month | title }}</a> {# To use dynamically #}
+    </li>
+    {% endfor %}
+</ul>
 </body>
 </html>
