@@ -1,0 +1,3 @@
+cd .venv/Scripts
+.\activate
+python manage.py startapp myApp
