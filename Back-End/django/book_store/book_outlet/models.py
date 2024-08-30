@@ -15,12 +15,17 @@ class Author(models.Model):
     last_name = models.CharField(max_length=50)
     address = models.OneToOneField(Address, on_delete=models.CASCADE, null=True)
 
+class Country(models.Model):
+    name = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+
 class Book(models.Model):
     title = models.CharField(max_length=10)
     rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     # author = models.CharField(null=True, max_length=100)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     is_bestselling = models.BooleanField(default=False)
+    published_countries = models.ManyToManyField(Country, blank=True)
     # slug = models.SlugField(default='', null=False)
 
     def __str__(self):

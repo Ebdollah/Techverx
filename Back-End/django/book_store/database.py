@@ -1,4 +1,4 @@
-from book_outlet.models import Book, Author, Address
+from book_outlet.models import Book, Author, Address, Country
 
 harry_potter = Book(title = 'HP-1', rating=5)
 harry_potter.save()
@@ -67,3 +67,10 @@ ad2.save()
 jk= Author.objects.get(last_name = 'Rowling')
 jk.address = ad1
 jk.save()
+
+
+germany = Country(name='Germany', code='DE')
+germany.save()
+
+hp = Book.objects.all()[1]
+hp.published_countries.add(germany)
