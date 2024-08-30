@@ -1,4 +1,4 @@
-from book_outlet.models import Book
+from book_outlet.models import Book, Author
 
 harry_potter = Book(title = 'HP-1', rating=5)
 harry_potter.save()
@@ -45,3 +45,15 @@ Book.objects.filter(is_bestselling = True) #to get multiple items from search
 from django.db.models import Q
 Book.objects.filter(rating__gt=3)
 Book.objects.filter(Q(rating__gt=3) | Q(title__contains='bond'))
+
+jkrowling = Author(first_name = 'JK', last_name = 'Rowling')
+hp1 = Book(title='Harry Potter 1',author=jkrowling, rating=4.3, is_bestselling=False)
+
+harrypotter = Book.objects.get(title = 'Harry Potter 1')
+harrypotter.author.first_name
+
+books_by_rowling = Book.objects.filter(author__last_name = 'Rowling')
+books_by_rowling
+
+jkr = Author.objects.get(last_name = 'Rowling')
+jkr.book_set.all()
