@@ -1,4 +1,4 @@
-from book_outlet.models import Book, Author
+from book_outlet.models import Book, Author, Address
 
 harry_potter = Book(title = 'HP-1', rating=5)
 harry_potter.save()
@@ -57,3 +57,13 @@ books_by_rowling
 
 jkr = Author.objects.get(last_name = 'Rowling')
 jkr.book_set.all()
+
+
+ad1 = Address(street='wefwef', city='we', postal_code='213')
+ad2 = Address(street='fvdreg', city='la', postal_code='215')
+ad1.save()
+ad2.save()
+
+jk= Author.objects.get(last_name = 'Rowling')
+jk.address = ad1
+jk.save()

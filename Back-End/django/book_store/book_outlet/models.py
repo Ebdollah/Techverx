@@ -5,9 +5,15 @@ from django.utils.text import slugify # type: ignore
 
 # Create your models here.
 
+class Address(models.Model):
+    street = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    postal_code = models.CharField(max_length=100)
+
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE, null=True)
 
 class Book(models.Model):
     title = models.CharField(max_length=10)
