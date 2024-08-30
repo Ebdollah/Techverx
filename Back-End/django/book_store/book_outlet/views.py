@@ -1,13 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Book
+from django.db.models import Avg
 from django.http import Http404
 
 # Create your views here.
 
 def index(request):
     all_books = Book.objects.all()
+    no_of_books = all_books.count()
+    avg_rating = all_books.aggregate(Avg('rating'))
     return render(request, 'book_outlet/index.html',{
-        'books' : all_books
+        'books' : all_books,
+        'no_of_books' : no_of_books,
+        'avg_rating' : avg_rating
     })
 
 def book_detail(request, book_id):

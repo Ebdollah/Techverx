@@ -29,9 +29,10 @@ harry_potter.save()
 
 #Now lets create several data
 
-Book.objects.create(title='Maze Runner',author='James Dashner', rating=5, is_bestselling=True)
-Book.objects.create(title='HxH',author='Yoshihiro Togashi', rating=5, is_bestselling=True)
-Book.objects.create(title='Vagabond ',author='Takehiko Inoue', rating=5, is_bestselling=False)
+Book.objects.create(title='Maze Runner',author='James Dashner', rating=4, is_bestselling=False)
+Book.objects.create(title='HxH',author='Yoshihiro Togashi', rating=4.5, is_bestselling=True)
+Book.objects.create(title='Vagabond ',author='Takehiko Inoue', rating=4.8, is_bestselling=False)
+Book.objects.create(title='Harry Potter 1',author='JK Rowling', rating=4.3, is_bestselling=False)
 
 len(Book.objects.all()) #4
 
