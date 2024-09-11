@@ -1,16 +1,16 @@
-{% extends 'book_outlet/base.html' %}
-
-{% block title %}
-    All books
-{% endblock %}
-
-{% block content %}
-    <h3>Total no of books: {{ no_of_books }}</h3>
-    <h4>Avg ratings: {{ avg_rating.rating__avg }}</h4>
-<ul>
-{% for book in books %}
+{#{% extends 'book_outlet/base.html' %}#}
+{##}
+{#{% block title %}#}
+{#    All books#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    <h3>Total no of books: {{ no_of_books }}</h3>#}
+{#    <h4>Avg ratings: {{ avg_rating.rating__avg }}</h4>#}
+{#<ul>#}
+{#{% for book in books %}#}
 {#<li><a href="{% url 'book-detail' book.id %}">{{ book.title }}</a></li>#}
-<li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
-{% endfor %}
-</ul>
-{% endblock %}
+{#<li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>#}
+{#{% endfor %}#}
+{#</ul>#}
+{#{% endblock %}#}

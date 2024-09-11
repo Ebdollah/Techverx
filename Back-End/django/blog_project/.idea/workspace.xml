@@ -5,40 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00469d4f-bb82-43c5-a468-679c381be468" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/blog_project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/static/blog/all-posts.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/static/blog/images/coding.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/static/blog/images/mountains.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/static/blog/images/woods.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/static/blog/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/static/blog/post-detail.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/static/blog/post.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/templates/blog/all-posts.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/templates/blog/includes/post.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/templates/blog/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/templates/blog/post-detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog_project/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog_project/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog_project/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog_project/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog_project/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/book_outlet/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/book_outlet/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/book_outlet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/book_outlet/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/book_outlet/templates/book_outlet/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/book_outlet/templates/book_outlet/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/book_outlet/templates/book_outlet/book_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/book_outlet/templates/book_outlet/book_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/book_outlet/templates/book_outlet/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/book_outlet/templates/book_outlet/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/book_outlet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/book_outlet/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/book_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/book_store/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/book_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/book_store/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../book_store/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../book_store/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,9 +23,28 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Ebdollah"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Ebdollah/Techverx.git",
+    "accountId": "0eeaef9a-718c-480e-b140-ad64395a8db7"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -60,22 +54,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Django Server.blog_project.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR_AND_PREVIEW&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Abdullah Waseem/Music/Techverx/Back-End/django/blog_project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Django Server.blog_project.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Abdullah Waseem/Music/Techverx/Back-End/django/blog_project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Abdullah Waseem\Music\Techverx\Back-End\django\blog_project" />
@@ -127,6 +122,7 @@
       <workItem from="1725030883400" duration="2301000" />
       <workItem from="1725173199205" duration="3969000" />
       <workItem from="1725181019958" duration="5104000" />
+      <workItem from="1725624713776" duration="5022000" />
     </task>
     <servers />
   </component>
