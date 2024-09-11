@@ -1,13 +1,26 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse # type: ignore
+from django.http import JsonResponse #type: ignore
+from products.models import Product
+import json  # to parse JSON data
+
 
 # Create your views here.
 
+def api_home(request):
+    model_data = Product.objects.all().order_by('?').first()
+    print(model_data)
+    data = {}
+    if model_data:
+        data['id'] = model_data.id
+        data['title'] = model_data.title
+        data['content'] = model_data.content
+        data['price'] = model_data.price
+    return JsonResponse(data)
+
 def index(request):
-    return HttpResponse('Hello')
+    pass
 
-from django.http import JsonResponse #type: ignore
-
-# def api_home(request, *args, **kwargs):
+# def api_dummy(request, *args, **kwargs):
 #     #it is django HttpRequest
 #     print(request.body)
 #     #It doesn't process or return any of the incoming request parameters or JSON data yet.
@@ -15,9 +28,8 @@ from django.http import JsonResponse #type: ignore
 #         "message" : "Hi, your django json response"
 #     })
 
-import json  # to parse JSON data
 
-# def api_home(request, *args, **kwargs):
+# def api_dummy(request, *args, **kwargs):
 #     # Get the 'abc' query parameter from the URL (still works for GET and POST)
 #     query_params = request.GET.get('abc')  # '123'
 #
@@ -39,7 +51,7 @@ import json  # to parse JSON data
 
 
 #this is a naive way
-# def api_home(request, *args, **kwargs):
+# def api_dummy(request, *args, **kwargs):
 #     body = request.body
 #     body_data = {}
 #     # Parse the JSON body for POST requests
@@ -58,7 +70,7 @@ import json  # to parse JSON data
 #         "message": "Hi, your django json response",
 #     })
 
-def api_home(request, *args, **kwargs):
+def api_dummy(request, *args, **kwargs):
     print(request.GET)
     # print(request.body)
     print(request.headers)
