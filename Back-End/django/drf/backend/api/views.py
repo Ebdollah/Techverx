@@ -5,6 +5,7 @@ from django.forms.models import model_to_dict
 import json  # to parse JSON data
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from products.serializers import ProductSerializer
 
 # Create your views here.
 @api_view(['GET'])
@@ -12,15 +13,17 @@ def api_home(request):
     """
     DRF API View
     """
-    model_data = Product.objects.all().order_by('?').first()
-    print(model_data)
+    instance = Product.objects.all().order_by('?').first()
+    print(instance)
     data = {}
-    if model_data:
-        data = model_to_dict(model_data)
+    if instance:
+        # data = model_to_dict(instance, fields=['id', 'title', 'price'])
+        data = ProductSerializer(instance).data
         # data['id'] = model_data.id
         # data['title'] = model_data.title
         # data['content'] = model_data.content
         # data['price'] = model_data.price
+    print(data)
     return Response(data)
 
 def index(request):
