@@ -1,14 +1,17 @@
 import requests
 
 # endpoint = 'https://httpbin.org/anything'
-endpoint = 'http://localhost:8000/api'  #make sure django is running
+endpoint = 'http://localhost:8000/api/'  #make sure django is running
 
 # get_data = requests.get(endpoint)  #http request
-get_data = requests.get(endpoint, json={"query" : "Hello World"})  #http request
+get_data = requests.get(endpoint, params={"abc": 123}, json={"query" : "Hello World"})  #http request
+# post_data = requests.post(endpoint, params={"abc": 123}, json={"query": "Hello World"})  # POST request
+print(get_data.json())
 
-print(get_data.text)
-print(get_data.status_code)
 # print(get_data.json())
+print(get_data.status_code)
+
+# print(get_data.text)
 
 # {
 #   "args": {},
