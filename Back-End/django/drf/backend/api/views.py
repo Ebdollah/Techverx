@@ -3,11 +3,15 @@ from django.http import JsonResponse, HttpResponse #type: ignore
 from products.models import Product
 from django.forms.models import model_to_dict
 import json  # to parse JSON data
-
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 # Create your views here.
-
+@api_view(['GET'])
 def api_home(request):
+    """
+    DRF API View
+    """
     model_data = Product.objects.all().order_by('?').first()
     print(model_data)
     data = {}
@@ -17,7 +21,7 @@ def api_home(request):
         # data['title'] = model_data.title
         # data['content'] = model_data.content
         # data['price'] = model_data.price
-    return JsonResponse(data)
+    return Response(data)
 
 def index(request):
     pass
