@@ -15,7 +15,7 @@ def api_home(request):
     """
     DRF API View
     """
-    serializer = PostProductSerializer(data=request.data)
+    serializer = GetProductSerializer(data=request.data)
     if serializer.is_valid():
         instance = serializer.save()
         serialized_data = PostProductSerializer(instance).data

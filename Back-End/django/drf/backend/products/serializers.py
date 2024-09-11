@@ -2,7 +2,7 @@ from rest_framework import serializers
 from products.models import Product
 
 class GetProductSerializer(serializers.ModelSerializer):
-    my_discount = serializers.SerializerMethodField()
+    my_discount = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Product
