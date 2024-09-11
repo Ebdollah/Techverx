@@ -3,9 +3,11 @@ from django.http import JsonResponse, HttpResponse #type: ignore
 from products.models import Product
 from django.forms.models import model_to_dict
 import json  # to parse JSON data
+
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from products.serializers import ProductSerializer
+from products.serializers import GetProductSerializer, PostProductSerializer
 
 # Create your views here.
 @api_view(['POST'])
@@ -13,10 +15,16 @@ def api_home(request):
     """
     DRF API View
     """
-    data = request.data
+    serializer = PostProductSerializer(data=request.data)
+    if serializer.is_valid():
+        instance = serializer.save()
+        serialized_data = PostProductSerializer(instance).data
+        print(serialized_data )
+        # print(serializer.validated_data)
+        # data = serializer.validated_data
+        return Response(serialized_data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    print(data)
-    return Response(data)
 
 # @api_view(['GET'])
 # def api_home(request):
@@ -28,7 +36,7 @@ def api_home(request):
 #     data = {}
 #     if instance:
 #         # data = model_to_dict(instance, fields=['id', 'title', 'price'])
-#         data = ProductSerializer(instance).data
+#         data = GetProductSerializer(instance).data
 #         # data['id'] = model_data.id
 #         # data['title'] = model_data.title
 #         # data['content'] = model_data.content

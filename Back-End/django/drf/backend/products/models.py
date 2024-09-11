@@ -8,7 +8,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=15, decimal_places=2, default=99.99)
 
     def __str__(self):
-        return self.title
+        return (f"{self.title} has price {self.price}, its description is {self.content} and currently"
+                f"sale is {self.sale_price} and you can get discount {self.get_discount()}")
 
     @property
     def sale_price(self):
