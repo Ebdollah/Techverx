@@ -4,12 +4,14 @@ import requests
 endpoint = 'http://localhost:8000/api/'  #make sure django is running
 
 # get_data = requests.get(endpoint)  #http request
-get_data = requests.get(endpoint, params={"abc": 123}, json={"query" : "Hello World"})  #http request
-# post_data = requests.post(endpoint, params={"abc": 123}, json={"query": "Hello World"})  # POST request
-print(get_data.json())
+# get_data = requests.get(endpoint, params={"abc": 123}, json={"query" : "Hello World"})  #http request
+post_data = requests.post(endpoint, json={"p_id": 2})  # POST request
+# print(get_data.json())
+print(post_data.json())
 
 # print(get_data.json())
-print(get_data.status_code)
+# print(get_data.status_code)
+print(post_data.status_code)
 
 # print(get_data.text)
 
