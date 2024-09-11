@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse # type: ignore
-from django.http import JsonResponse #type: ignore
+from django.http import JsonResponse, HttpResponse #type: ignore
 from products.models import Product
+from django.forms.models import model_to_dict
 import json  # to parse JSON data
 
 
@@ -11,10 +12,11 @@ def api_home(request):
     print(model_data)
     data = {}
     if model_data:
-        data['id'] = model_data.id
-        data['title'] = model_data.title
-        data['content'] = model_data.content
-        data['price'] = model_data.price
+        data = model_to_dict(model_data)
+        # data['id'] = model_data.id
+        # data['title'] = model_data.title
+        # data['content'] = model_data.content
+        # data['price'] = model_data.price
     return JsonResponse(data)
 
 def index(request):
