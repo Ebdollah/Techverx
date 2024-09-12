@@ -4,9 +4,10 @@ from .models import Product
 from .serializers import GetProductSerializer, PostProductSerializer
 from django.shortcuts import render, get_object_or_404 # type: ignore
 from django.http import JsonResponse, HttpResponse, Http404 #type: ignore
-from rest_framework import generics, status
+from rest_framework import generics, status, mixins, permissions, authentication
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from .permissions import IsStaffEditorPermission
 
 # Create your views here.
 
@@ -35,6 +36,11 @@ class ProductListApiView(generics.ListAPIView):
 class ProductListCreateApiView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = PostProductSerializer
+    authentication_classes = [authentication.SessionAuthentication]
+    #Check all auth types
+    permission_classes = [IsStaffEditorPermission]
+    #check all the permission types, they are amazing
+    #we have every kind of permissions
 
     def perform_create(self, serializer):
        # serializer.save(user=self.request.user)
@@ -120,3 +126,11 @@ def product_alt_view(request,pk=None, *args, **kwargs):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+#Also explore mixins generic views
+# class ProductMixinView(
+#     mixins.CreateModelMixin,
+#     mixins.ListModelMixin,
+#     mixins.RetrieveModelMixin,
+#     generics.GenericAPIView
+#     ):
+#     pass
