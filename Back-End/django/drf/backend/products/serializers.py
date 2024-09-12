@@ -23,7 +23,7 @@ class GetProductSerializer(serializers.ModelSerializer):
            return None
 
 class PostProductSerializer(serializers.ModelSerializer):
-    my_discount = serializers.SerializerMethodField()
+    my_discount = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Product
