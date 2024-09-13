@@ -7,11 +7,13 @@ from django.http import JsonResponse, HttpResponse, Http404 #type: ignore
 from rest_framework import generics, status, mixins, permissions, authentication
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .permissions import IsStaffEditorPermission
+# from .permissions import IsStaffEditorPermission
+from api.mixins import StaffEditorPermissionMixin
+# from api.authentications import TokenAuthentication
 
 # Create your views here.
 
-class ProductCreateApiView(generics.CreateAPIView):
+class ProductCreateApiView(generics.CreateAPIView,StaffEditorPermissionMixin):
     queryset = Product.objects.all()
     serializer_class = PostProductSerializer
 
@@ -24,21 +26,25 @@ class ProductCreateApiView(generics.CreateAPIView):
        serializer.save(content=content)
        # send a Django signal
 
-class ProductDetailApiView(generics.RetrieveAPIView):
+class ProductDetailApiView(generics.RetrieveAPIView,StaffEditorPermissionMixin):
     queryset = Product.objects.all()
     serializer_class = GetProductSerializer
     #we want to look our data using pk
 
-class ProductListApiView(generics.ListAPIView):
+class ProductListApiView(
+    generics.ListAPIView,
+    StaffEditorPermissionMixin):
+
     queryset = Product.objects.all()
     serializer_class = GetProductSerializer
 
-class ProductListCreateApiView(generics.ListCreateAPIView):
+class ProductListCreateApiView(
+    generics.ListCreateAPIView,
+    StaffEditorPermissionMixin):
+
     queryset = Product.objects.all()
     serializer_class = PostProductSerializer
-    authentication_classes = [authentication.SessionAuthentication]
     #Check all auth types
-    permission_classes = [IsStaffEditorPermission]
     #check all the permission types, they are amazing
     #we have every kind of permissions
 
@@ -51,7 +57,7 @@ class ProductListCreateApiView(generics.ListCreateAPIView):
        serializer.save(content=content)
        # send a Django signal
 
-class ProductUpdateAPIView(generics.UpdateAPIView):
+class ProductUpdateAPIView(generics.UpdateAPIView,StaffEditorPermissionMixin):
     queryset = Product.objects.all()
     serializer_class = PostProductSerializer
     lookup_field = 'pk'
@@ -62,15 +68,20 @@ class ProductUpdateAPIView(generics.UpdateAPIView):
             instance.content = instance.title
             ##
 
-
-class ProductDestroyAPIView(generics.DestroyAPIView):
+class ProductDestroyAPIView(generics.DestroyAPIView,StaffEditorPermissionMixin):
     queryset = Product.objects.all()
     serializer_class = PostProductSerializer
     lookup_field = 'pk'
 
+
     def perform_destroy(self, instance):
         # instance
-        super().perform_destroy(instance)
+        try:
+           super().perform_destroy(instance)
+           return Response({'message': 'Product deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+        except Product.DoesNotExist:
+           return Response({'error': 'Product not found'}, status=status.HTTP_404_NOT_FOUND)
+
 
 
 @api_view(['GET','POST', 'DELETE', 'PUT'])
