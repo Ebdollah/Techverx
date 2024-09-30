@@ -59,7 +59,18 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
 ]
-CORS_ALLOW_ALL_ORIGINS = True
+CSRF_COOKIE_NAME = "csrftoken"
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins, or specify your frontend's URL
+CORS_ALLOW_CREDENTIALS = True   # Allow credentials (for CSRF)
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173',  # Your React app's origin
+    'http://127.0.0.1:8000',  # Your Django server
+]
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',  # Your React app's origin
+]
+CSRF_COOKIE_SAMESITE = 'Lax'
+
 
 ROOT_URLCONF = 'drf_basic_backend.urls'
 
@@ -96,10 +107,10 @@ AUTH_USER_MODEL = 'user_api.AppUser'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
     ),
 }
 

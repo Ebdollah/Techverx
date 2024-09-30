@@ -1,8 +1,8 @@
 {
-  "name": "drf_basic_frondend",
+  "name": "drf_basic_frontend",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,9 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@openzeppelin/contracts": "^4.0.0",
     "axios": "^1.7.7",
+    "ethers": "^6.13.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "web3": "^4.13.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
