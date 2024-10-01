@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView, LogoutView
 from leads.views import landing_page, signup_page
 
+# https://github.com/justdjango/getting-started-with-django/blob/20-static-files/templates/base.html
 
 urlpatterns = [
     path('admin/', admin.site.urls),

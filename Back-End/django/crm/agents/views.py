@@ -9,7 +9,8 @@ from .forms import AgentModelForm
 
 @login_required()
 def AgentListView(request):
-    agents = Agent.objects.all()
+    oraganisation = request.user.userprofile
+    agents = Agent.objects.filter(oraganisation = oraganisation)
     print(agents)
     context = {
         'agents' : agents
@@ -25,7 +26,7 @@ def AgentCreateView(request):
             agent = form.save(commit=False)
             agent.organisation = request.user.userprofile
             agent.save()
-            return redirect('agents_list')
+            return redirect('agents:agents_list')
     context = {
         'form' : form
     }
@@ -34,6 +35,8 @@ def AgentCreateView(request):
 
 @login_required()
 def AgentDetailView(request, pk):
+    # oraganisation = request.user.userprofile
+    # agent = Agent.objects.filter(oraganisation=oraganisation)
     agent = Agent.objects.get(id = pk)
     context = {
         'agent' : agent
