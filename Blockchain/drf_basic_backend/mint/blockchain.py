@@ -23,7 +23,20 @@ def mint_nft(recipient_address):
         'gas': 3000000
     })
     tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    # logs = tx_receipt['logs']
+    # token_id = w3.toInt(hexstr=logs[0]['topics'][3].hex())
+    # print(token_id)
 
     # Convert tx_receipt to a dict format if it's not already
     return dict(tx_receipt)  # Ensure that it can be serialized
+
+def transfer_nft(from_address, to_address, token_id):
+    # Transfer NFT on the blockchain
+    tx_hash = contract.functions.transferNFT(from_address, to_address, token_id).transact({
+        'from': from_address,  # Sender of the transaction
+        'gas': 3000000
+    })
+    tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
+    return tx_receipt
+
 
