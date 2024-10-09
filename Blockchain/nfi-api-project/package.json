@@ -1,0 +1,13 @@
+{
+  "name": "nft-api-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start --prefix backend\" \"npm run start --prefix frontend\"",
+    "start-backend": "npm run start --prefix backend",
+    "start-frontend": "npm run start --prefix frontend",
+    "start-hardhat": "npx hardhat node --prefix hardhat"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
