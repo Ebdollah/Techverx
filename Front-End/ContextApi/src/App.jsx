@@ -5,8 +5,8 @@ import File from './Exercise/File';
 function App() {
   return (
     
-      // <MyComponent />
-      <File />
+      <MyComponent />
+      // <File />
    
   );
 }
