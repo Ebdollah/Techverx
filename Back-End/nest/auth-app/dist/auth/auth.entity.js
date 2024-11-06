@@ -9,28 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Authent = void 0;
+exports.Auth = void 0;
 const typeorm_1 = require("typeorm");
-let Authent = class Authent {
+let Auth = class Auth {
 };
-exports.Authent = Authent;
+exports.Auth = Auth;
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Authent.prototype, "id", void 0);
+], Auth.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Authent.prototype, "username", void 0);
+], Auth.prototype, "username", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Authent.prototype, "email", void 0);
+], Auth.prototype, "email", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Authent.prototype, "password", void 0);
-exports.Authent = Authent = __decorate([
+], Auth.prototype, "password", void 0);
+exports.Auth = Auth = __decorate([
     (0, typeorm_1.Entity)()
-], Authent);
+], Auth);
 //# sourceMappingURL=auth.entity.js.map

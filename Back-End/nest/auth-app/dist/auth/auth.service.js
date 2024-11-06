@@ -17,15 +17,30 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const auth_entity_1 = require("./auth.entity");
 const typeorm_2 = require("typeorm");
+const bcrypt = require("bcrypt");
 let AuthService = class AuthService {
     constructor(authRepositery) {
         this.authRepositery = authRepositery;
+    }
+    async signup(createAuthDto) {
+        const salt = await bcrypt.genSalt();
+        const hashedPassword = await bcrypt.hash(createAuthDto.password, salt);
+        const newPerson = this.authRepositery.create({ ...createAuthDto, password: hashedPassword });
+        return this.authRepositery.save(newPerson);
+    }
+    async login(createAuthDto) {
+        const getUser = await this.authRepositery.findOne({
+            where: { email: createAuthDto.email }
+        });
+        if (getUser && await bcrypt.compare(createAuthDto.password, getUser.password))
+            return getUser;
+        throw new Error("Invalid");
     }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(auth_entity_1.Authent)),
+    __param(0, (0, typeorm_1.InjectRepository)(auth_entity_1.Auth)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map
