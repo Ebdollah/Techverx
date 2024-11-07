@@ -15,32 +15,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const auth_entity_1 = require("./auth.entity");
-const typeorm_2 = require("typeorm");
 const bcrypt = require("bcrypt");
+const user_repositery_1 = require("./user.repositery");
 let AuthService = class AuthService {
-    constructor(authRepositery) {
-        this.authRepositery = authRepositery;
+    constructor(usersRepositery) {
+        this.usersRepositery = usersRepositery;
     }
-    async signup(createAuthDto) {
-        const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(createAuthDto.password, salt);
-        const newPerson = this.authRepositery.create({ ...createAuthDto, password: hashedPassword });
-        return this.authRepositery.save(newPerson);
+    async signup(authDto) {
+        return this.usersRepositery.createUser(authDto);
     }
-    async login(createAuthDto) {
-        const getUser = await this.authRepositery.findOne({
-            where: { email: createAuthDto.email }
-        });
-        if (getUser && await bcrypt.compare(createAuthDto.password, getUser.password))
-            return getUser;
-        throw new Error("Invalid");
+    async signin(authDto) {
+        const { username, email, password } = authDto;
+        const user = await this.usersRepositery.findOne({ where: { username } });
+        if (user && (await bcrypt.compare(password, user.password))) {
+            return "success";
+        }
     }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(auth_entity_1.Auth)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(0, (0, typeorm_1.InjectRepository)(user_repositery_1.UsersRepositery)),
+    __metadata("design:paramtypes", [user_repositery_1.UsersRepositery])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

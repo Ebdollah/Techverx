@@ -20,11 +20,11 @@ let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
     }
-    signup(createAuthDto) {
-        return this.authService.signup(createAuthDto);
+    signup(authDto) {
+        return this.authService.signup(authDto);
     }
-    login(createAuthDto) {
-        return this.authService.login(createAuthDto);
+    signin(authDto) {
+        return this.authService.signin(authDto);
     }
 };
 exports.AuthController = AuthController;
@@ -32,16 +32,16 @@ __decorate([
     (0, common_1.Post)('signup'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [auth_dto_1.CreateAuthDto]),
+    __metadata("design:paramtypes", [auth_dto_1.AuthDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "signup", null);
 __decorate([
     (0, common_1.Post)('login'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [auth_dto_1.CreateAuthDto]),
+    __metadata("design:paramtypes", [auth_dto_1.AuthDto]),
     __metadata("design:returntype", void 0)
-], AuthController.prototype, "login", null);
+], AuthController.prototype, "signin", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

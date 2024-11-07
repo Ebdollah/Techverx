@@ -1,7 +1,7 @@
 // src/noter/dto/create-noter.dto.ts
 import { IsString, IsEmail, IsNotEmpty } from 'class-validator';
 
-export class CreateAuthDto {
+export class AuthDto {
   @IsString()
   @IsNotEmpty()
   username: string;
