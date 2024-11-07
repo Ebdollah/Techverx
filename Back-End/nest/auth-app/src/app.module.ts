@@ -6,7 +6,6 @@ import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
-    TasksModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -18,6 +17,7 @@ import { TasksModule } from './tasks/tasks.module';
       synchronize: true,
     }),
     AuthModule,
+    TasksModule,
   ],
 })
 export class AppModule {}

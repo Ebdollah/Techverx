@@ -9,23 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateAuthDto = void 0;
+exports.GetTasksFilterDto = void 0;
 const class_validator_1 = require("class-validator");
-class CreateAuthDto {
+const task_status_enum_1 = require("../task-status.enum");
+class GetTasksFilterDto {
 }
-exports.CreateAuthDto = CreateAuthDto;
+exports.GetTasksFilterDto = GetTasksFilterDto;
 __decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsEnum)(task_status_enum_1.TaskStatus),
+    __metadata("design:type", String)
+], GetTasksFilterDto.prototype, "status", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
-], CreateAuthDto.prototype, "username", void 0);
-__decorate([
-    (0, class_validator_1.IsEmail)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreateAuthDto.prototype, "email", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
-], CreateAuthDto.prototype, "password", void 0);
-//# sourceMappingURL=auth.dto.js.map
+], GetTasksFilterDto.prototype, "search", void 0);
+//# sourceMappingURL=get-tasks-filter.dto.js.map

@@ -9,23 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateAuthDto = void 0;
-const class_validator_1 = require("class-validator");
-class CreateAuthDto {
-}
-exports.CreateAuthDto = CreateAuthDto;
+exports.Task = void 0;
+const typeorm_1 = require("typeorm");
+const task_status_enum_1 = require("./task-status.enum");
+let Task = class Task {
+};
+exports.Task = Task;
 __decorate([
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)('uuid'),
     __metadata("design:type", String)
-], CreateAuthDto.prototype, "username", void 0);
+], Task.prototype, "id", void 0);
 __decorate([
-    (0, class_validator_1.IsEmail)(),
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], CreateAuthDto.prototype, "email", void 0);
+], Task.prototype, "title", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], CreateAuthDto.prototype, "password", void 0);
-//# sourceMappingURL=auth.dto.js.map
+], Task.prototype, "description", void 0);
+__decorate([
+    (0, typeorm_1.Column)(),
+    __metadata("design:type", String)
+], Task.prototype, "status", void 0);
+exports.Task = Task = __decorate([
+    (0, typeorm_1.Entity)()
+], Task);
+//# sourceMappingURL=task.entity.js.map
