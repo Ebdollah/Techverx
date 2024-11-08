@@ -5,25 +5,31 @@ import { Auth } from './auth.entity';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { UsersRepositery } from './user.repositery';
+import { JwtService } from '@nestjs/jwt';
 
-
+interface JwtPayload{
+    username: string
+}
 
 @Injectable()
 export class AuthService{
     constructor(
         @InjectRepository(UsersRepositery)
         private usersRepositery: UsersRepositery,
+        private jwtService: JwtService
     ){}
 
     async signup(authDto: AuthDto): Promise<void>{
         return this.usersRepositery.createUser(authDto)
     }
 
-    async signin(authDto: AuthDto): Promise<string>{
+    async signin(authDto: AuthDto): Promise<{accessToken: string}>{
         const {username, email, password} = authDto;
         const user = await this.usersRepositery.findOne({where:{username}})
         if(user && (await bcrypt.compare(password, user.password))){
-            return "success"
+            const payload: JwtPayload = {username}
+            const accessToken: string = await this.jwtService.sign(payload)
+            return {accessToken}
         }
     }
 }

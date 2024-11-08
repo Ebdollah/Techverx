@@ -17,9 +17,11 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const bcrypt = require("bcrypt");
 const user_repositery_1 = require("./user.repositery");
+const jwt_1 = require("@nestjs/jwt");
 let AuthService = class AuthService {
-    constructor(usersRepositery) {
+    constructor(usersRepositery, jwtService) {
         this.usersRepositery = usersRepositery;
+        this.jwtService = jwtService;
     }
     async signup(authDto) {
         return this.usersRepositery.createUser(authDto);
@@ -28,7 +30,9 @@ let AuthService = class AuthService {
         const { username, email, password } = authDto;
         const user = await this.usersRepositery.findOne({ where: { username } });
         if (user && (await bcrypt.compare(password, user.password))) {
-            return "success";
+            const payload = { username };
+            const accessToken = await this.jwtService.sign(payload);
+            return { accessToken };
         }
     }
 };
@@ -36,6 +40,7 @@ exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(user_repositery_1.UsersRepositery)),
-    __metadata("design:paramtypes", [user_repositery_1.UsersRepositery])
+    __metadata("design:paramtypes", [user_repositery_1.UsersRepositery,
+        jwt_1.JwtService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map
