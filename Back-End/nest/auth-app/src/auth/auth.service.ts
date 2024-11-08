@@ -6,10 +6,8 @@ import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { UsersRepositery } from './user.repositery';
 import { JwtService } from '@nestjs/jwt';
+import { JwtPayload } from './jwt-payload.interface';
 
-interface JwtPayload{
-    username: string
-}
 
 @Injectable()
 export class AuthService{
