@@ -1,0 +1,122 @@
+[
+    {
+      "id": "87da6946-7ca9-414a-9c73-6618f57a497a",
+      "account_id": "6825740b-6bce-4ef3-a72b-8dc7837a3a03",
+      "customer_id": "a3eb2d7a-5e12-4c67-9790-e3ab1df7291e",
+      "customer_name": "Abdullah Waseem",
+      "address_id": "9d8dfef8-0b2a-424f-8f5c-3bc6874bc252",
+      "address": "3P Gulberg",
+      "benchmark_price": null,
+      "hauler_bill_id": null,
+      "external_uid": "1112233",
+      "location_id": "9d8dfef8-0b2a-424f-8f5c-3bc6874bc252",
+      "program": "new",
+      "source": "old",
+      "haulerContractId": "aa944223-af5e-446d-ad45-205499c1ec12",
+      "is_active": false,
+      "total": 0,
+      "haulerBillItems": [
+        {
+          "id": "9a33d533-39d5-43b3-9eb8-ebbda2559e3e",
+          "accountId": "6825740b-6bce-4ef3-a72b-8dc7837a3a03",
+          "customerId": "a3eb2d7a-5e12-4c67-9790-e3ab1df7291e",
+          "serviceLocationId": "87da6946-7ca9-414a-9c73-6618f57a497a",
+          "description": "OOC",
+          "quantity": "1.00",
+          "amount": "100.00",
+          "haulerBillId": "12ff46db-2fd7-4cc2-b270-e28fb3d2c9ff",
+          "isActive": true,
+          "serviceTypeId": "02356a02-6ad4-4884-909e-8b9c1750d85d",
+          "serviceType": {
+            "id": "02356a02-6ad4-4884-909e-8b9c1750d85d",
+            "name": "OOC",
+            "pricing_type": "fixed",
+            "frequency_types": [
+              "on_demand",
+              "monthly"
+            ],
+            "default_frequency_type": null,
+            "show_is_franchised": true,
+            "allow_prepend": false
+          }
+        }
+      ],
+      "haulerContractIds": [
+        "d45feb50-0b40-4e0e-a651-2adda3a33687",
+        "e2dc7182-c713-4d0c-933c-350976cc3513",
+        "3ae1fdf3-6055-4287-8d11-d8c745402ed8",
+        "aa944223-af5e-446d-ad45-205499c1ec12"
+      ]
+    },
+    {
+      "id": "594943a3-dc0e-4d96-993c-53993f985883",
+      "account_id": "6825740b-6bce-4ef3-a72b-8dc7837a3a03",
+      "customer_id": "a3eb2d7a-5e12-4c67-9790-e3ab1df7291e",
+      "customer_name": "Abdullah Waseem",
+      "address_id": "0ed52fc0-c88b-4183-a9ff-743fe2fa8309",
+      "address": "menlo park",
+      "benchmark_price": null,
+      "hauler_bill_id": null,
+      "external_uid": "11221100",
+      "location_id": "0ed52fc0-c88b-4183-a9ff-743fe2fa8309",
+      "program": "ewf",
+      "source": "old",
+      "haulerContractId": "aa944223-af5e-446d-ad45-205499c1ec12",
+      "is_active": true,
+      "total": 0,
+      "haulerBillItems": [
+        {
+          "id": "f596e099-881f-4297-9600-4070a12786d5",
+          "accountId": "6825740b-6bce-4ef3-a72b-8dc7837a3a03",
+          "customerId": "a3eb2d7a-5e12-4c67-9790-e3ab1df7291e",
+          "serviceLocationId": "594943a3-dc0e-4d96-993c-53993f985883",
+          "description": "MOC",
+          "quantity": "1.00",
+          "amount": "100.00",
+          "haulerBillId": "12ff46db-2fd7-4cc2-b270-e28fb3d2c9ff",
+          "isActive": true,
+          "serviceTypeId": "4726a833-d515-40cd-ba98-9a8148206da5",
+          "serviceType": {
+            "id": "4726a833-d515-40cd-ba98-9a8148206da5",
+            "name": "MOC",
+            "pricing_type": "fixed",
+            "frequency_types": [
+              "on_demand",
+              "monthly"
+            ],
+            "default_frequency_type": null,
+            "show_is_franchised": true,
+            "allow_prepend": false
+          }
+        },
+        {
+          "id": "183fa954-102f-4d45-957c-fd37d7b073df",
+          "accountId": "6825740b-6bce-4ef3-a72b-8dc7837a3a03",
+          "customerId": "a3eb2d7a-5e12-4c67-9790-e3ab1df7291e",
+          "serviceLocationId": "594943a3-dc0e-4d96-993c-53993f985883",
+          "description": "OOC",
+          "quantity": "1.00",
+          "amount": "70.00",
+          "haulerBillId": "12ff46db-2fd7-4cc2-b270-e28fb3d2c9ff",
+          "isActive": true,
+          "serviceTypeId": "02356a02-6ad4-4884-909e-8b9c1750d85d",
+          "serviceType": {
+            "id": "02356a02-6ad4-4884-909e-8b9c1750d85d",
+            "name": "OOC",
+            "pricing_type": "fixed",
+            "frequency_types": [
+              "on_demand",
+              "monthly"
+            ],
+            "default_frequency_type": null,
+            "show_is_franchised": true,
+            "allow_prepend": false
+          }
+        }
+      ],
+      "haulerContractIds": [
+        "e2dc7182-c713-4d0c-933c-350976cc3513",
+        "aa944223-af5e-446d-ad45-205499c1ec12"
+      ]
+    }
+  ]
