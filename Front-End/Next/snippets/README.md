@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Getting Started and on Prisma
 
 First, run the development server:
 
@@ -12,6 +12,9 @@ yarn dev
 pnpm dev
 # or
 bun dev
+
+npx prisma init --datasource-provider sqlite
+npx prisma migrate dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -22,12 +25,14 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Creating Records
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Create a Prisma client** to access our database.
+2. **Create a form** in `SnippetCreatePage`.
+3. **Define a Server Action**. This is a function that will be called when the form is submitted.
+4. In the **Server Action**, validate the user's input, then create a new snippet.
+5. **Redirect** the user to the Home Page, which lists all the snippets.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
