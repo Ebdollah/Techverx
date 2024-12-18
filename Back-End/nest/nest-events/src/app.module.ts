@@ -1,33 +1,29 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventsModule } from './events/events.module';
-import { Event } from './events/event.entity';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true
+      isGlobal: true,
+      envFilePath: '.env',
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost', // Database host
-      port: 5432,        // Default PostgreSQL port
-      username: 'postgres', // Username you created
-      password: 'example', // Password you set
-      database: 'nest-events', // Database name
-      entities: [Event],
-      autoLoadEntities: true, // Automatically load entity files
-      synchronize: true, // Use only in development
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) => ({
+        type: 'postgres',
+        host: configService.get('DB_HOST') || 'localhost',
+        port: parseInt(configService.get('DB_PORT')) || 5432,
+        username: configService.get('DB_USER') || 'postgres',
+        password: configService.get('DB_PASSWORD') || 'example',
+        database: configService.get('DB_NAME') || 'nest-events',
+        autoLoadEntities: true,
+        synchronize: true,
+      }),
+      inject: [ConfigService],
     }),
-    
-    EventsModule,    
-    // AuthModule,
-    // UserModule,
+    EventsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
