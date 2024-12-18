@@ -1,27 +1,22 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { EventsModule } from './events/events.module';
+import { Event } from './events/event.entity';
+import ormConfig from './config/orm.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
+      load:[ormConfig]
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get('DB_HOST') || 'localhost',
-        port: parseInt(configService.get('DB_PORT')) || 5432,
-        username: configService.get('DB_USER') || 'postgres',
-        password: configService.get('DB_PASSWORD') || 'example',
-        database: configService.get('DB_NAME') || 'nest-events',
-        autoLoadEntities: true,
-        synchronize: true,
-      }),
       inject: [ConfigService],
+      useFactory: (configService: ConfigService) =>
+        configService.get<TypeOrmModuleOptions>('orm.config'), // Load the config
     }),
     EventsModule,
   ],
