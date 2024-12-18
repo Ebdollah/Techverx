@@ -4,9 +4,13 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { EventsModule } from './events/events.module';
 import { Event } from './events/event.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost', // Database host
@@ -18,7 +22,7 @@ import { Event } from './events/event.entity';
       autoLoadEntities: true, // Automatically load entity files
       synchronize: true, // Use only in development
     }),
-    TypeOrmModule.forFeature([Event]),
+    
     EventsModule,    
     // AuthModule,
     // UserModule,
