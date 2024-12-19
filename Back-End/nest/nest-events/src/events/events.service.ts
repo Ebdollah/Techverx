@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { Event } from './event.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -39,31 +39,39 @@ export class EventService {
     return event;
   }
 
-    async getEvents():Promise<Event[]>{
-        return this.eventRepositery.find();
+    async getEvents(): Promise<Event[]> {
+    const events = await this.eventRepositery.find();
+    if (!events.length) {
+        throw new NotFoundException('No events found.');
+    }
+    return events;
+}
+
+    async getEventById(id: number): Promise<Event> {
+      const event = await this.eventRepositery.findOne({ where: { id }, relations: ['attendees'] });
+      if (!event) {
+        throw new NotFoundException(`Event with id ${id} not found.`);
+      }
+        return event;
     }
 
-    async getEventById(id: number):Promise<Event>{
-       return this.eventRepositery.findOne({where:{id},relations:['attendees']})
-    }
 
     async createEvent(createEventDto: CreateEventDto): Promise<{ id: number, message: string }> {
       try {
-        const newEvent = this.eventRepositery.create(createEventDto);
-        await this.eventRepositery.save(newEvent);
-    
-        return {
-          id: newEvent.id,
-          message: 'Event created successfully!',
-        };
+          const newEvent = this.eventRepositery.create(createEventDto);
+          await this.eventRepositery.save(newEvent);
+
+          return {
+              id: newEvent.id,
+              message: 'Event created successfully!',
+          };
       } catch (error) {
-        console.error('Error creating event:', error);
-    
-        throw new BadRequestException(
-          error?.detail || 'Invalid input data or event creation failed.'
-        );
+          console.error('Error creating event:', error);
+          throw new BadRequestException(
+              error?.detail || 'Invalid input data or event creation failed.'
+          );
       }
-    }
+  }
 
     async updateEvent(id:number, updateEventDto:UpdateEventDto):Promise<{data:Event, message:string}>{
       try{
@@ -85,13 +93,16 @@ export class EventService {
       }
     }
 
-    async deleteEvenet(id: number):Promise<{id:number, message: string }>{
-      const event = await this.eventRepositery.findOne({where:{id}})
-      await this.eventRepositery.delete(event)
-      return{
-        id:event.id,
-        message:'Event Deleted Sucessfuly'
+    async deleteEvenet(id: number): Promise<{ id: number, message: string }> {
+      const event = await this.eventRepositery.findOne({ where: { id } });
+      if (!event) {
+          throw new NotFoundException(`Event with id ${id} not found.`);
       }
-    }
+      await this.eventRepositery.delete(event);
+      return {
+          id: event.id,
+          message: 'Event deleted successfully!',
+      };
+  }
     
 }
