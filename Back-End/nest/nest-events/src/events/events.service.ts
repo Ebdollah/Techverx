@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Attendee } from './attendee.entity';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { ListEvents } from './list.event';
 
 @Injectable()
 export class EventService {

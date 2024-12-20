@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, Logger, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Logger, NotFoundException, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
 import { EventService } from './events.service';
 import { Event } from './event.entity';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
 import { EventsQueryService } from './events-query.service';
+import { ListEvents } from './list.event';
+import { SelectQueryBuilder } from 'typeorm';
 
 @Controller('events') // This sets the base route for the controller
 export class EventsController {
@@ -28,11 +30,19 @@ export class EventsController {
   }
 
   @Get()
-  async getEvents(): Promise<Event[]> {
+  async getEvents(@Query() filter:ListEvents): Promise<Event[] | SelectQueryBuilder<Event>> {
       this.logger.log('Fetching all events...');
-      const events = await this.eventService.getEvents();
-      this.logger.log(`Fetched ${events.length} events.`);
-      return events;
+      if(!filter){
+          const events = await this.eventService.getEvents();
+          this.logger.log(`Fetched ${events.length} events.`);
+          return events;
+      }
+      else{
+        const events = await this.eventQueryService.getEventsWithAttendeeCountFilteredQuery(filter)
+        //   this.logger.log(`Fetched ${events.length} events.`);
+        return events;
+      }
+     
   }
 
   @Get(':id')

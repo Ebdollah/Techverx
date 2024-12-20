@@ -1,8 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from "typeorm";
+import { Repository, SelectQueryBuilder } from "typeorm";
 import { Event } from "./event.entity";
 import { AttendeeAnswerEnum } from './attendee.entity';
+import { ListEvents, WhenEventFilter } from './list.event';
 
 @Injectable()
 export class EventsQueryService {
@@ -44,6 +45,44 @@ export class EventsQueryService {
         'attendee',
         (qb) => qb.where('attendee.answer = :answer', { answer: AttendeeAnswerEnum.Rejected }) // Counts Rejected attendees
       );
+  }
+
+  public async getEventsWithAttendeeCountFilteredQuery(
+    filter?: ListEvents
+  ): Promise<SelectQueryBuilder<Event> | Event[]> {
+    let query = this.getEventsWithAttendeeCountQuery();
+
+    if (!filter) {
+      return query;
+    }
+
+    if (filter.when) {
+      if (filter.when == WhenEventFilter.Today) {
+        // In Postgres
+        query = query.andWhere(
+          `e.when >= now() AND e.when <= now() + interval '1 day'`
+        );
+      }
+
+      if (filter.when == WhenEventFilter.Tommorow) {
+        // In Postgres
+        query = query.andWhere(
+          `e.when >= now() + interval '1 day' AND e.when <= now() + interval '2 day'`
+        );
+      }
+
+      if (filter.when == WhenEventFilter.ThisWeek) {
+        // In Postgres
+        query = query.andWhere(`date_part('week', e.when) = date_part('week', now())`);
+      }
+
+      if (filter.when == WhenEventFilter.NextWeek) {
+        // In Postgres
+        query = query.andWhere(`date_part('week', e.when) = date_part('week', now()) + 1`);
+      }
+    }
+
+    return await query.getMany();
   }
 
   // Fetch a specific event by ID, including attendee counts
