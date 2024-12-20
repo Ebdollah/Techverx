@@ -6,7 +6,7 @@ import { Event } from './events/event.entity';
 import ormConfig from './config/orm.config';
 import { SchoolModule } from './school/school.module';
 import { Attendee } from './events/attendee.entity';
-import { Subject } from './school/subject.entity';
+import { Subject } from './school/entities/subject.entity';
 
 @Module({
   imports: [

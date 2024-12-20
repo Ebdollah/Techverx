@@ -1,16 +1,18 @@
-import { Body, Controller, Delete, Get, Logger, NotFoundException, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Logger, NotFoundException, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { EventService } from './events.service';
 import { Event } from './event.entity';
 import { CreateEventDto } from './dto/create-event.dto';
 import { UpdateEventDto } from './dto/update-event.dto';
+import { EventsQueryService } from './events-query.service';
 
 @Controller('events') // This sets the base route for the controller
 export class EventsController {
     private readonly logger = new Logger(EventsController.name);
 
-    constructor(private readonly eventService: EventService) {
+    constructor(private readonly eventService: EventService, private eventQueryService:EventsQueryService) {
         this.logger.log('EventsController initialized.');
     }
+
 
     @Get('practice2')
     async practice2() {
@@ -44,6 +46,18 @@ export class EventsController {
           this.logger.error(`Error fetching event with id ${id}:`, error.message);
           throw error;
       }
+  }
+
+  @Get('query/:id')
+  async getEventByQuery(@Param('id', ParseIntPipe) id: number) {
+    // console.log(typeof id);
+    const event = await this.eventQueryService.getEvent(id);
+
+    if (!event) {
+      throw new NotFoundException();
+    }
+
+    return event;
   }
 
   @Post()
