@@ -82,7 +82,7 @@ export class EventsQueryService {
       }
     }
 
-    return await query.getMany();
+    return await query;
   }
 
   // Fetch a specific event by ID, including attendee counts
